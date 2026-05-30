@@ -12,7 +12,7 @@
 - [x] GCP $100 크레딧 신청 폼 제출 (2026-05-30)
 - [ ] **GCP 코드 도착(≤5영업일) → console.cloud.google.com/billing/redeem 에서 redeem ⏰ 6/4 전 필수**
 - [ ] GCP 계정 + **billing account 생성** (redeem 선행조건)
-- [ ] Devpost 에서 해커톤 **Join** (https://rapid-agent.devpost.com/)
+- [x] Devpost 해커톤 **Join** + 제출 draft 시작 (name/pitch 입력, 2026-05-30)
 - [ ] MongoDB Atlas 무료 M0 클러스터 + 벡터검색
 - [ ] 테스트 Gmail 계정 + 샘플 메일 + Gmail API OAuth (⚠️ 진짜 메일 X)
 - [ ] **[코딩 시작]** uv 프로젝트 뼈대 → 첫 슬라이스: 메일 읽고 4분류(긴급/액션/뉴스레터/스팸) + 라벨 (`/tdd`)
@@ -53,8 +53,19 @@ uv run ruff check . && uv run ruff format .   # 린트+포맷
 ## 🔒 절대 규칙 (해커톤 + 안전)
 - **실제 개인 메일 금지.** 데모·개발은 **전용 테스트 Gmail 계정 + 샘플 메일**만. 진짜 받은편지함 연결 X.
 - **메일 자동 발송 X.** 답장은 **draft(초안)까지만** 생성. 사람이 검토 후 보냄.
-- **오픈소스 제출**: repo 공개 + OSI 라이선스(Apache-2.0). 회사 코드 재활용 금지 — 전부 신규 작성.
+- **오픈소스 제출**: repo 공개 + OSI 라이선스(**MIT**, `LICENSE`). 회사 코드 재활용 금지 — 전부 신규 작성.
 - Google Cloud / MongoDB 외 **경쟁 서비스(AWS 등) 사용 금지** (트랙 규칙).
+
+## Agent skills
+
+### Issue tracker
+Issues are tracked in **GitHub Issues** (`gh` CLI). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+Default label vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+Single-context (`CONTEXT.md` + `docs/adr/` at repo root). See `docs/agents/domain.md`.
 
 ## References
 - 프로젝트 계획·일정·제출물 체크리스트 → @README.md
