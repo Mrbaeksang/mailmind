@@ -35,7 +35,8 @@ def test_prefers_plain_text_part_in_multipart_message():
 
 def test_parses_thread_into_ordered_messages():
     m1 = _message(headers=[{"name": "Subject", "value": "First"}], body_data="one")
-    m2 = {**_message(headers=[{"name": "Subject", "value": "Re: First"}], body_data="two"), "id": "m2"}
+    m2 = _message(headers=[{"name": "Subject", "value": "Re: First"}], body_data="two")
+    m2["id"] = "m2"
     raw_thread = {"id": "t1", "messages": [m1, m2]}
 
     thread = parse_thread(raw_thread)

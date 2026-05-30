@@ -45,7 +45,7 @@
 
 ```bash
 uv sync                         # 의존성 설치
-uv run pytest                   # 테스트 (현재 core 6개 모듈, 22 tests)
+uv run pytest                   # 테스트 (현재 core 6개 모듈, 19 tests)
 uv run ruff check . && uv run ruff format .   # 린트 + 포맷
 cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
 ```

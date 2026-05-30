@@ -6,10 +6,10 @@ Kept dependency-free so every other module can import them without pulling I/O.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import Enum
+from enum import StrEnum
 
 
-class Category(str, Enum):
+class Category(StrEnum):
     """The four triage buckets an email is classified into."""
 
     URGENT = "urgent"
