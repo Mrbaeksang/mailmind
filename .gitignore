@@ -1,0 +1,24 @@
+# secrets / creds
+.env
+.env.*
+secrets/
+*credentials*.json
+*token*.json
+service-account*.json
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# node
+node_modules/
+dist/
+.next/
+
+# os/editor
+.DS_Store
+*.log
+.idea/
+.vscode/
