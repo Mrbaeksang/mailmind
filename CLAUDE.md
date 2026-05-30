@@ -16,7 +16,7 @@
 - [ ] MongoDB Atlas 무료 M0 클러스터 + 벡터검색
 - [ ] 테스트 Gmail 계정 + 샘플 메일 + Gmail API OAuth (⚠️ 진짜 메일 X)
 - [x] PRD(이슈 #1) + 슬라이스 이슈 #2~#10 발행 (S0/S8=ready-for-human)
-- [x] **백엔드 TDD 완성** (37 tests green, ruff clean, 계정없이 fakes/mongomock/TestClient 검증): core 6개 + store(+$vectorSearch 빌더) + ingest + mcp 정책(send/파괴툴 차단) + web(FastAPI) + operations(process_inbox/semantic_search)
+- [x] **백엔드 TDD 완성** (43 tests green, ruff clean, 계정없이 fakes/mongomock/TestClient 검증): core 6개 + store(+$vectorSearch 빌더) + ingest + mcp 정책(send/파괴툴 차단) + web(FastAPI) + operations(process_inbox/semantic_search)
 - [ ] 모델: **Gemini 3.5 Flash**(생성) + **Gemini Embedding 2**(임베딩, 3072) — 배선 시 정확한 API id 확인
 - [ ] **남음(계정 필요)**: 라이브 어댑터(Vertex·Gmail/Mongo MCP 실연결)·ADK 에이전트·Next UI·샘플생성·배포 → 이슈 #2(S0) 선행
 - [ ] **이슈 #2 (S0)**: 외부계정 셋업 + Gmail/Mongo 공식 MCP 실접속 검증 (사용자 선행 필요) → 이후 어댑터·에이전트·웹·배포(이슈 #3~#10)

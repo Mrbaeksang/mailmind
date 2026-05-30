@@ -45,7 +45,7 @@
 
 ```bash
 uv sync                         # 의존성 설치
-uv run pytest                   # 테스트 (37 tests: core·store·ingest·mcp·web·operations)
+uv run pytest                   # 테스트 (43 tests: core·store·ingest·mcp·web·operations)
 uv run ruff check . && uv run ruff format .   # 린트 + 포맷
 cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
 ```
