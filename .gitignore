@@ -1,6 +1,7 @@
 # secrets / creds
 .env
 .env.*
+!.env.example
 secrets/
 *credentials*.json
 *token*.json

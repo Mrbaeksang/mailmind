@@ -15,7 +15,9 @@
 - [x] Devpost 해커톤 **Join** + 제출 draft 시작 (name/pitch 입력, 2026-05-30)
 - [ ] MongoDB Atlas 무료 M0 클러스터 + 벡터검색
 - [ ] 테스트 Gmail 계정 + 샘플 메일 + Gmail API OAuth (⚠️ 진짜 메일 X)
-- [ ] **[코딩 시작]** uv 프로젝트 뼈대 → 첫 슬라이스: 메일 읽고 4분류(긴급/액션/뉴스레터/스팸) + 라벨 (`/tdd`)
+- [x] PRD(이슈 #1) + 슬라이스 이슈 #2~#10 발행 (S0/S8=ready-for-human)
+- [x] uv 뼈대 + **core 6개 deep module TDD 완성** (22 tests green, ruff clean): email_parsing·embedding_input·ingest_transform·classifier·summarizer·draft_writer
+- [ ] **이슈 #2 (S0)**: 외부계정 셋업 + Gmail/Mongo 공식 MCP 실접속 검증 (사용자 선행 필요) → 이후 어댑터·에이전트·웹·배포(이슈 #3~#10)
 - [ ] 슬라이스2: MongoDB 적재 + 벡터검색 + MCP 래핑
 - [ ] 슬라이스3: 요약·할일·답장초안 + 웹UI
 - [ ] 배포(Cloud Run) → 데모영상(vstudio) → Devpost 제출

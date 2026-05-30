@@ -41,5 +41,20 @@
 - Google Cloud $100 크레딧: 6/4까지 신청 (https://forms.gle/xfv9vQzfRfNCCVbG7)
 - 회사 코드 재활용 금지 (오픈소스 신규 작성)
 
+## 개발 (Development)
+
+```bash
+uv sync                         # 의존성 설치
+uv run pytest                   # 테스트 (현재 core 6개 모듈, 22 tests)
+uv run ruff check . && uv run ruff format .   # 린트 + 포맷
+cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
+```
+
+**현재 구현 상태**: 순수 로직 코어가 TDD로 완성됨 (`src/mailmind/core/`):
+`email_parsing` · `embedding_input` · `ingest_transform` · `classifier` · `summarizer` · `draft_writer`.
+LLM/임베딩은 `mailmind.ports` 의 좁은 포트(`TextModel`/`EmbeddingModel`) 뒤에 있어 코어는 I/O 없이 테스트됨.
+
+**다음 작업**: 어댑터(Vertex·Gmail/Mongo 공식 MCP)·에이전트 결선·웹·배포 — GitHub 이슈 [#2~#10](https://github.com/Mrbaeksang/mailmind/issues) 참조 (PRD = [#1](https://github.com/Mrbaeksang/mailmind/issues/1)). 이들은 외부 계정(GCP·Atlas·테스트 Gmail+Developer Preview)이 선행 필요 → 이슈 #2(S0)가 그 셋업·검증 슬라이스.
+
 ## 라이선스
 MIT — `LICENSE` 참조. (OSI 승인 라이선스, 해커블 제출 요건 충족)

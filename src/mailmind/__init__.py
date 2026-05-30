@@ -1,0 +1,1 @@
+"""MailMind — agentic email assistant."""
