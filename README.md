@@ -45,16 +45,20 @@
 
 ```bash
 uv sync                         # 의존성 설치
-uv run pytest                   # 테스트 (현재 core 6개 모듈, 19 tests)
+uv run pytest                   # 테스트 (37 tests: core·store·ingest·mcp·web·operations)
 uv run ruff check . && uv run ruff format .   # 린트 + 포맷
 cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
 ```
 
-**현재 구현 상태**: 순수 로직 코어가 TDD로 완성됨 (`src/mailmind/core/`):
-`email_parsing` · `embedding_input` · `ingest_transform` · `classifier` · `summarizer` · `draft_writer`.
-LLM/임베딩은 `mailmind.ports` 의 좁은 포트(`TextModel`/`EmbeddingModel`) 뒤에 있어 코어는 I/O 없이 테스트됨.
+**현재 구현 상태** (계정 없이 fakes/mongomock/TestClient로 전부 검증됨):
+- `core/` — `email_parsing` · `embedding_input` · `ingest_transform` · `classifier` · `summarizer` · `draft_writer` (LLM/임베딩은 `mailmind.ports` 포트 뒤)
+- `store.py` — Atlas 접근(pymongo) + `$vectorSearch` 파이프라인 빌더 (mongomock 검증)
+- `ingest/` — Gmail raw → parse → embed → upsert 파이프라인
+- `mcp/config.py` — 공식 MCP 정책 (Gmail send 차단·Mongo 파괴툴 차단, 불변식 테스트)
+- `web/app.py` — FastAPI 엔드포인트 (health·emails·threads·process·search, TestClient 검증)
+- `operations.py` — process_inbox / semantic_search 오케스트레이션 (주입형, fakes 검증)
 
-**다음 작업**: 어댑터(Vertex·Gmail/Mongo 공식 MCP)·에이전트 결선·웹·배포 — GitHub 이슈 [#2~#10](https://github.com/Mrbaeksang/mailmind/issues) 참조 (PRD = [#1](https://github.com/Mrbaeksang/mailmind/issues/1)). 이들은 외부 계정(GCP·Atlas·테스트 Gmail+Developer Preview)이 선행 필요 → 이슈 #2(S0)가 그 셋업·검증 슬라이스.
+**남은 작업 (외부 계정·자격증명 선행 필요 → 오프라인 검증 불가)**: 라이브 어댑터(Vertex Gemini/Embedding, Gmail·Mongo 공식 MCP 실연결), ADK 에이전트 인스턴스화, Next.js UI, 샘플메일 생성(실 Gemini), Cloud Run 배포. → GitHub 이슈 [#2~#10](https://github.com/Mrbaeksang/mailmind/issues) (PRD=[#1](https://github.com/Mrbaeksang/mailmind/issues/1)). **이슈 #2(S0)** = 계정 셋업·MCP 접근 검증, 이게 풀려야 위가 진행됨.
 
 ## 라이선스
 MIT — `LICENSE` 참조. (OSI 승인 라이선스, 해커블 제출 요건 충족)
