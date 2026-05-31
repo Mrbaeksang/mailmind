@@ -17,7 +17,7 @@
 - [ ] 테스트 Gmail 계정 + 샘플 메일 + Gmail API OAuth (⚠️ 진짜 메일 X)
 - [x] PRD(이슈 #1) + 슬라이스 이슈 #2~#10 발행 (S0/S8=ready-for-human)
 - [x] **백엔드 TDD 완성** (43 tests green, ruff clean, 계정없이 fakes/mongomock/TestClient 검증): core 6개 + store(+$vectorSearch 빌더) + ingest + mcp 정책(send/파괴툴 차단) + web(FastAPI) + operations(process_inbox/semantic_search)
-- [x] **샘플코퍼스 37통**(영어, 4분류·5스레드·contract 검색타깃) + **DummyEmbedder**(오프라인, 단어겹침 기반) → Atlas 적재 → **라이브 `$vectorSearch` end-to-end 검증**(쿼리별 정답 top-hit 반환). GCP 오면 `--vertex`로 실임베딩 교체.
+- [x] **샘플코퍼스 30통**(영어, 4분류·5스레드·contract 검색타깃) + **DummyEmbedder**(오프라인, 단어겹침 기반) → Atlas 적재 → **라이브 `$vectorSearch` end-to-end 검증**(쿼리별 정답 top-hit 반환). GCP 오면 `--vertex`로 실임베딩 교체.
 - [ ] 모델: **Gemini 3.5 Flash**(생성) + **Gemini Embedding 2**(임베딩, 3072) — 배선 시 정확한 API id 확인
 - [ ] **남음(계정 필요)**: Vertex 실임베딩/Gemini 분류 라이브 결선·Gmail MCP·ADK 에이전트·Next UI·배포 → 이슈 #2(S0=GCP/Gmail) 선행
 - [ ] **이슈 #2 (S0)**: 외부계정 셋업 + Gmail/Mongo 공식 MCP 실접속 검증 (사용자 선행 필요) → 이후 어댑터·에이전트·웹·배포(이슈 #3~#10)
