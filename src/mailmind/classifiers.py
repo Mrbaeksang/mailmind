@@ -15,7 +15,13 @@ _URGENT = ("urgent", "p1", "asap", "immediately", "today", "deadline", "rotate",
 _SPAM = ("won", "winner", "prize", "lottery", "gift card", "crypto", "100x", "no prescription",
          "inheritance", "claim", "$1000", "deactivated", "verify your account")
 _NEWSLETTER = ("newsletter", "weekly", "digest", "briefing", "tldr", "what's new",
-               "this week", "this month", "unsubscribe")
+               "this week", "this month", "unsubscribe", "top stories", "read more",
+               "highlights", "catch up", "launches", "top product", "this issue",
+               "this quarter", "rundown")
+
+# Sender local-parts/domains typical of bulk/newsletter mail.
+_BULK_SENDERS = ("newsletter@", "updates@", "news@", "digest@", "crew@", "hello@",
+                 "editor@", "noreply@", "no-reply@", "marketing@")
 
 
 class RuleModel:
@@ -27,13 +33,22 @@ class RuleModel:
         # those labels.
         marker = prompt.find("From:")
         text = (prompt[marker:] if marker != -1 else prompt).lower()
+        sender_line = text.splitlines()[0] if text else ""
 
         def hits(words):
             return sum(1 for w in words if w in text)
 
         spam, urgent, news = hits(_SPAM), hits(_URGENT), hits(_NEWSLETTER)
-        if spam >= 1 and spam >= urgent:
+
+        # Sender address is the strongest newsletter signal (bulk senders).
+        bulk_sender = any(p in sender_line for p in _BULK_SENDERS)
+        if bulk_sender:
+            news += 2
+
+        if spam >= 1 and spam >= urgent and spam >= news:
             cat, conf = "spam", 0.8
+        elif news >= 2 and news >= urgent:
+            cat, conf = "newsletter", 0.72
         elif urgent >= 1:
             cat, conf = "urgent", 0.75
         elif news >= 1:

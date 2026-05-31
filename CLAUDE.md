@@ -19,7 +19,7 @@
 - [x] **백엔드 TDD 완성** (43 tests green, ruff clean, 계정없이 fakes/mongomock/TestClient 검증): core 6개 + store(+$vectorSearch 빌더) + ingest + mcp 정책(send/파괴툴 차단) + web(FastAPI) + operations(process_inbox/semantic_search)
 - [x] **샘플코퍼스 30통**(영어, 4분류·5스레드·contract 검색타깃) + **DummyEmbedder**(오프라인, 단어겹침 기반) → Atlas 적재 → **라이브 `$vectorSearch` end-to-end 검증**(쿼리별 정답 top-hit 반환). GCP 오면 `--vertex`로 실임베딩 교체.
 - [ ] 모델: **Gemini 3.5 Flash**(생성) + **Gemini Embedding 2**(임베딩, 3072) — 배선 시 정확한 API id 확인
-- [x] **백엔드 end-to-end 라이브 동작**(오프라인 모델로): `process_inbox.py` 30통 분류→Atlas 카테고리 적재(urgent8/action11/newsletter7/spam4); FastAPI `web.main:app` 라이브 Atlas 서빙 검증(/emails=30, urgent=8, /search "vendor contract"→a2/a1/a11). RuleModel/DummyEmbedder → GCP 오면 GeminiModel/VertexEmbedder로 스왑.
+- [x] **백엔드 end-to-end 라이브 동작**(오프라인 모델로): `process_inbox.py` 30통 분류→Atlas 카테고리 적재 **정확도 30/30**(urgent5/action12/newsletter8/spam5); FastAPI `web.main:app` 라이브 Atlas 서빙 검증(/emails=30, urgent=5, /search "vendor contract"→a2/a1/a11). RuleModel(sender 신호 포함)/DummyEmbedder → GCP 오면 GeminiModel/VertexEmbedder로 스왑.
 - [ ] **남음(계정 필요)**: Vertex 실임베딩/Gemini 분류·Gmail MCP(라벨/초안)·ADK 에이전트·Next UI·Cloud Run 배포 → 이슈 #2(S0=GCP/Gmail) 선행
 - [ ] **이슈 #2 (S0)**: 외부계정 셋업 + Gmail/Mongo 공식 MCP 실접속 검증 (사용자 선행 필요) → 이후 어댑터·에이전트·웹·배포(이슈 #3~#10)
 - [ ] 슬라이스2: MongoDB 적재 + 벡터검색 + MCP 래핑
