@@ -50,6 +50,8 @@ uv run python scripts/check_atlas.py          # Atlas 라이브 연결 확인 (.
 uv run python scripts/create_vector_index.py  # 벡터 인덱스 생성 (1회)
 uv run python scripts/load_samples.py         # 샘플 37통 적재 (오프라인=DummyEmbedder; --vertex 로 실임베딩)
 uv run python scripts/check_vector_search.py "the vendor contract"  # 라이브 벡터검색 시연
+uv run python scripts/process_inbox.py        # 분류→카테고리 적재 (오프라인 RuleModel, 라이브 Atlas)
+uv run uvicorn mailmind.web.main:app --reload # 백엔드 API 로컬 실행 (라이브 Atlas 연결)
 uv run ruff check . && uv run ruff format .   # 린트 + 포맷
 cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
 ```
