@@ -45,7 +45,11 @@
 
 ```bash
 uv sync                         # 의존성 설치
-uv run pytest                   # 테스트 (43 tests: core·store·ingest·mcp·web·operations)
+uv run pytest                   # 테스트 (62 tests: core·store·ingest·mcp·web·operations·sample_data·embedders)
+uv run python scripts/check_atlas.py          # Atlas 라이브 연결 확인 (.env 필요)
+uv run python scripts/create_vector_index.py  # 벡터 인덱스 생성 (1회)
+uv run python scripts/load_samples.py         # 샘플 37통 적재 (오프라인=DummyEmbedder; --vertex 로 실임베딩)
+uv run python scripts/check_vector_search.py "the vendor contract"  # 라이브 벡터검색 시연
 uv run ruff check . && uv run ruff format .   # 린트 + 포맷
 cp .env.example .env            # 비밀값 채우기 (실제 .env 는 커밋 금지)
 ```
