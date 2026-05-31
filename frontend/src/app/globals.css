@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* MailMind design system — Linear-derived dark tokens.
+   See ../../docs/design.md for sources (getdesign.md). */
+@theme {
+  --color-bg-primary: #08090a;
+  --color-bg-secondary: #0f1011;
+  --color-bg-tertiary: #1c1d1f;
+  --color-border: #23252a;
+  --color-text-primary: #f7f8f8;
+  --color-text-secondary: #8a8f98;
+  --color-text-tertiary: #62666d;
+  --color-accent: #5e6ad2;
+  --color-accent-hover: #6872e5;
+  --color-success: #4cb782;
+  --color-warning: #f2c94c;
+  --color-error: #eb5757;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-weight: 510;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* thin, unobtrusive scrollbars — fits the dense Linear aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
