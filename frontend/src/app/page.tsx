@@ -20,7 +20,7 @@ export default function Home() {
       setError(null);
       setEmails(await api.listEmails());
     } catch (e) {
-      setError(`Couldn't reach the API on :8000. (${(e as Error).message})`);
+      setError(`Couldn't reach the backend API. Is it running? (${(e as Error).message})`);
     }
   };
 

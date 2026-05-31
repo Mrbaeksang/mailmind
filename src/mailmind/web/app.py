@@ -10,6 +10,7 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from mailmind.store import Store
 
@@ -28,6 +29,15 @@ def create_app(
     searcher: Searcher | None = None,
 ) -> FastAPI:
     app = FastAPI(title="MailMind")
+
+    # The Next.js frontend runs on a different port (dev: :3001), so it is a
+    # cross-origin caller. Allow it (dev is permissive; tighten for prod).
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.get("/health")
     def health() -> dict:
