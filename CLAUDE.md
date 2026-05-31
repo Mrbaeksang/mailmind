@@ -13,7 +13,7 @@
 - [ ] **GCP 코드 도착(≤5영업일) → console.cloud.google.com/billing/redeem 에서 redeem ⏰ 6/4 전 필수**
 - [ ] GCP 계정 + **billing account 생성** (redeem 선행조건)
 - [x] Devpost 해커톤 **Join** + 제출 draft 시작 (name/pitch 입력, 2026-05-30)
-- [x] MongoDB Atlas M0 클러스터(Cluster0, AWS Seoul) **라이브 연결 확인** + `emails`/`threads` 컬렉션 + **벡터 인덱스 생성**(3072 cosine, BUILDING→queryable). 연결문자열은 `.env`(MONGODB_URI, 비커밋)
+- [~] MongoDB Atlas M0 클러스터(Cluster0, AWS Seoul) 생성됨 + `.env`에 연결문자열(MONGODB_URI, 비커밋). ⚠️ **아직 라이브 연결 미완** — pymongo `bad auth` (비번 불일치 추정), 재발급 후 재시도 필요. 컬렉션/벡터인덱스 생성은 인증 통과 후.
 - [ ] 테스트 Gmail 계정 + 샘플 메일 + Gmail API OAuth (⚠️ 진짜 메일 X)
 - [x] PRD(이슈 #1) + 슬라이스 이슈 #2~#10 발행 (S0/S8=ready-for-human)
 - [x] **백엔드 TDD 완성** (43 tests green, ruff clean, 계정없이 fakes/mongomock/TestClient 검증): core 6개 + store(+$vectorSearch 빌더) + ingest + mcp 정책(send/파괴툴 차단) + web(FastAPI) + operations(process_inbox/semantic_search)
