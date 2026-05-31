@@ -45,7 +45,7 @@
 
 ```bash
 uv sync                         # 의존성 설치
-uv run pytest                   # 테스트 (54 tests: core·store·ingest·mcp·web·operations·sample_data·embedders)
+uv run pytest                   # 테스트 (58 tests: core·store·ingest·mcp·web·operations·sample_data·embedders·classifiers)
 uv run python scripts/check_atlas.py          # Atlas 라이브 연결 확인 (.env 필요)
 uv run python scripts/create_vector_index.py  # 벡터 인덱스 생성 (1회)
 uv run python scripts/load_samples.py         # 샘플 37통 적재 (오프라인=DummyEmbedder; --vertex 로 실임베딩)
